@@ -15,10 +15,13 @@ This project explores the performance difference between serial processing on CP
 - **Results:** Executed in **0.0013s** for $N=1000$.
 - **Observation:** Massive speedup even with larger matrix sizes.
 
-### 3. Custom CUDA Kernel
-- **Goal:** Writing a manual CUDA kernel using `cp.RawKernel`.
-- **Results:** Executed in **0.0523s**.
-- **Observation:** Faster than CPU but slower than optimized libraries.
+### 3. Custom CUDA Kernel vs. Library Functions
+- **Goal:** Launching a manual kernel and comparing it with optimized libraries.
+- **Block Size:** Tested with (16x16) threads.
+- **Comparison:**
+    - Manual Kernel: 0.0523s
+    - CuPy matmul: 0.0012s
+- **Conclusion:** While the manual kernel is fast, specialized libraries like CuPy are highly optimized for hardware and outperform basic manual implementations.
 
 ### 4. Performance Optimization (Tiling)
 - **Goal:** Improving memory access using **Shared Memory (Tiling)**.
